@@ -1,1 +1,1 @@
-﻿Server=10.10.81.50; Database=Test_DB; User Id=sms_user; Password = pass;Encrypt=false;
+﻿Server=10.10.81.50; Database=Test_DB; User Id=admin; Password = password ;Encrypt=false;
