@@ -11,4 +11,4 @@ ChartJS
 Here are some screenshot form the web application
 ![main](src/data.png)
 ![stats](src/stats.png)
-![map](src/map.png)
+![map](src/map.PNG)
