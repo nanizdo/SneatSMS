@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">SMS/Email History</h1>
+    <p>This page shows the history and status of emails and short messages sent to clients each time a delivery is on its way, alongside with the GPS coordiantes.</p>
+</div>
+
+<div class="card">
+<div class="card-datatable table-responsive">
+<div class="card-header flex-column flex-md-row ">
+    <div class="col-sm-6"><h5 class="card-title mb-0">Email/SMS History List</h5></div>
+</div>
+ <div class="table-responsive d-flex justify-content-center" style="width:80vw;">
+@*<button class="btn-primary btn" onclick="func()"><i class="tf bx bx-refresh "></i>Refresh</button>*@
+<table class="table"  id="bla" style="width: 80vw; padding:15px;">
+    <thead>
+        <tr>
+            <th rowspan="2">Time</th>
+            <th rowspan="2">Client Name</th>
+            <th rowspan="2">Message</th>
+            <th rowspan="2">Itinerary / Duration</th>
+            <th rowspan="2">Duration (Hours)</th>
+            <th colspan="2">status</th>
+            <th rowspan="2">GPS Info</th>
+            <th rowspan="2">Odometry</th>
+        </tr>
+        <tr>
+            <th>SMS</th>
+            <th>Email</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="modal fade" id="exLargeModal" tabindex="-1" aria-hidden="true" style="opacity:1;">
+   <div class="modal-dialog modal-xl" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel4">Driver Location</h5>
+         <button
+           type="button"
+           class="btn-close"
+           data-bs-dismiss="modal"
+           aria-label="Close"
+         ></button>
+       </div>
+       <div class="modal-body">
+         <div class="row">
+            <div id ="mapspinner" style="display:grid;justify-items:center;">
+                <img src="~/292.gif" alt="loading" />
+                <hr style="width: 40vw;" />
+                <h5>Please wait, while we fetch location and display Maps.</h5>
+            </div>
+             <div class="container" id="demoMap" style="height:70vh;"></div>
+         </div>
+        </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+           Close
+         </button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+<script>
+   document.getElementById("btnhome").classList.add("active");
+</script>

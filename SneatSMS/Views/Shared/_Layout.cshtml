@@ -1,0 +1,486 @@
+﻿<!DOCTYPE html>
+
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+<html
+  lang="en"
+  class="light-style layout-menu-fixed "
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../../sneat/assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>@ViewData["title"]</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../sneat/assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />*@
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">      
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">   *@
+    <link rel="stylesheet" href="../../sneat/assets/vendor/css/dataTables.bootstrap.min.css">   
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap.min.css">      
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="../../sneat/assets/vendor/fonts/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../../sneat/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../../sneat/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../../sneat/assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../../sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+
+       
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="../../sneat/assets/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../../sneat/assets/js/config.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <style>
+    .search-left{
+        justify-content:left;
+        float:left;
+    }
+    .dom-padding{
+        padding:15px;
+    }
+    </style>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar ">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
+              <div class="app-brand-logo" style="width:fit-content; display:flex; justify-content:center;">
+                <img style="width:67%" src="~/met-bg-transparent.svg" alt="Metidji" />
+              </div>
+
+            </a>
+
+
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1 ">
+            <!-- Dashboard -->
+            <li class="menu-item" id="btnhome">
+              <a asp-area="" asp-controller="Home" asp-action="Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Home</div>
+              </a>
+            </li>
+            <!-- Privacy -->
+            <li class="menu-item" id="btnPrivacy">
+              <a asp-area="" asp-controller="Home" asp-action="Stats" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-line-chart"></i>
+                <div data-i18n="Analytics">Stats</div>
+              </a>
+            </li>
+           </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+         <button id="togglemenu" onclick="hidemenu()" class="btn rounded-pill btn-icon btn-primary d-block" style="margin-left: -20px; margin-top:30px; position:fixed; z-index: 1081;">
+              <span id="toggleicon" class="tf-icons bx bx-chevron-left text-white"></span>
+         </button>
+
+            <div class="container-fluid flex-grow-1 container-p-y">
+              <!-- Layout Demo -->
+              <div class="layout-demo-wrapper">
+               @RenderBody()
+                
+              </div>
+              <!--/ Layout Demo -->
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-fluid d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , by <strong>Nadir Zaouidi</strong>
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+
+    <!-- Scripts -->
+
+    <script src="../../sneat/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../../sneat/assets/vendor/libs/popper/popper.js"></script>
+    <script src="../../sneat/assets/vendor/js/bootstrap.js"></script>
+
+    <script src="../../sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="https://demos.themeselection.com/sneat-bootstrap-html-laravel-admin-template/demo/assets/vendor/js/menu.js?id=f45ec38086f86335b91fc2fdcaaadab8"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="~/js/OpenLayers.js"></script>
+
+
+
+
+
+    <script src="../../sneat/assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="../../sneat/assets/js/main.js"></script>
+    <script src="../../sneat/assets/js/ui-modals.js"></script>
+
+    <!-- DataTable Exemple -->
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                dom: 'Blfrtip',
+                buttons: [
+                {
+                     text: 'My button',
+                     className: 'btn btn-primary ',
+                     action: function ( e, dt, node, config ) {
+                     alert( 'Button activated' );
+                }
+                  }
+        ]  });
+});
+    </script>
+    <!-- DataTable For SMS/Email History -->
+    <script>
+        $(document).ready(function () {
+           $('#bla').DataTable({
+                 dom : "<'row dom-padding'<'col-sm-3'l><'col-sm-6 text-center d-flex justify-content-center'B><'col-sm-3 'f>>" +
+			"<'row'<'col-sm-12'tr>>" +
+			"<'row dom-padding'<'col-sm-5'i><'col-sm-7'p>>",
+                 processing: true,
+                 scrollX: false,
+                 language: {search : "",
+                            lengthMenu: '_MENU_ Per Page',
+                            processing: '<img style="height:fit-content; border-radius:160px; opacity:80%; width:6vw;" src ="Ripple-1s-200px.gif" alt="loading ..."/>'
+                 },
+                 order:[],
+                 
+                 ajax: {
+                 url:'../Home/Table',
+                 type:'post', 
+           },
+                  columns: [
+                     { data: 'datetime' },
+                     { data: 'clientname' },
+                     { data: 'message' },
+                     { data: 'itenerary' },
+                     { data: 'duration' },
+                     { data: 'smsstatus',
+                        render: function (data, type) {
+                        if (type === 'display') {
+                        if (data.endsWith('OK')) {
+                            return  '<span class="badge bg-label-success d-inline-flex align-items-center"><i class="bx bx-check"></i><p class="m-0"> SMS </p></span>';
+                        } else
+                            return '<span class="badge bg-label-danger d-inline-flex align-items-center"><i class="bx bx-x"></i><p class="m-0"> SMS </p></span>';
+                    }
+ 
+                    return data;} 
+                     },
+                     { data: 'emailstatus',
+                     render: function (data, type) {
+                        if (type === 'display') {
+                        if (data.endsWith('OK')) {
+                            return  '<span class="badge bg-label-success d-inline-flex align-items-center"><i class="bx bx-check"></i><p class="m-0"> Email </p></span>';
+                        } else
+                            return '<span class="badge bg-label-danger d-inline-flex align-items-center"></"><i class="bx bx-x"></i> <p class="m-0"> Email </p></span>';
+                    }
+ 
+                    return data;} },
+                     { data: 'matricule' },
+                     { data: 'kilodep' },
+                    ],
+                    columnDefs: [
+                        {
+                             render: function (data, type, row) {
+                             return data +'</br> (' + row["duration"] +' Hrs)' ;
+                                },targets: 3,
+                                
+                         },
+                        {
+                            visible: false, targets: [4],
+                        },
+                         {
+                             render: function (data, type, row) {
+                                return row["kilodep"]>-1 ? '<a class="btn btn-sm btn-icon" onclick="gps(\''+data+'\')" data-bs-toggle="modal" data-bs-target="#exLargeModal"><span class="tf-icons bx bx-location-plus text-primary"></span><a/>' : '1' ;
+                                },targets: 7,
+                         },
+                        {
+                            visible: false, targets: [8],
+                        },
+
+                    ],
+                    buttons: [
+                     {
+                         extend:    'copyHtml5',
+                         className: 'btn btn-primary',
+                         text:      '<i class="bx bx-copy"></i>',
+                         titleAttr: 'Copy'
+                     },
+                     {
+                         extend:    'excelHtml5',
+                         className: 'btn btn-primary',
+                         text:      '<i class="bx bx-spreadsheet" ></i>',
+                         titleAttr: 'Excel'
+                     },
+                     {
+                         extend:    'csvHtml5',
+                         className: 'btn btn-primary',
+                         text:      '<i class="bx bx-file"></i>',
+                         titleAttr: 'CSV'
+                     },
+                     {
+                         className: 'btn btn-primary',
+                         text:      '<i class="bx bx-revision"></i>',
+                         titleAttr: 'Refresh',
+                         action:               function ( e, dt, node, config ) {
+                                                 $('#bla').DataTable().ajax.reload();
+                                                 }
+                     }
+                    ],
+                            initComplete: function () {
+                             var btns = $('.dt-button');
+                             btns.addClass('btn btn-primary btn-sm');
+                             btns.removeClass('dt-button');
+                             $('.input-sm').attr('placeholder','Search Here!');
+                             $('.input-sm').addClass('form-control');
+                             $('.input-sm').removeClass('input-sm');
+                             $('.div.dataTables_processing>div:last-child').css('display','none');
+                             $('#bla_paginate').css('float','right');
+                            }
+            });
+        //      table.buttons().container()
+        //.appendTo( '#bla_wrapper .col-md-6:eq(0)' );
+});
+
+ // ---------------------- Reload Table every 1 min -------------------
+setInterval( function () {
+    $('#bla').DataTable().ajax.reload();
+}, 60000 );
+    </script>
+    <!---------- Function to reload table   -------------->
+    <script>
+        function func(){
+            $('#bla').DataTable().ajax.reload();
+        }
+    </script>
+    <!-------------- SideBar Menu Toggle ---------------->
+    <script>
+    var b = true;
+    function hidemenu(){
+        if(b){
+        $('#layout-menu').addClass('d-xl-none');
+        $('.layout-page').css('padding-left','0');
+        $('.table-responsive').css('width','95vw');
+        $('#bla').css('width','100vw');
+        $('#bla').css('width','95vw');
+        $('#toggleicon').addClass('bx-menu');
+        $('#toggleicon').removeClass('bx-chevron-left');
+        $('#togglemenu').css('display','block !important');
+        $('#togglemenu').css('padding-left','0');
+        $('#togglemenu').css('margin-left','2vw');
+        $('#togglemenu').css('position','absolute');
+        
+
+        b = false;
+        }else{
+        $('#togglemenu').css('display','block !important');
+        $('#togglemenu').css('margin-left','-20px');
+        $('#togglemenu').css('position','fixed');
+        $('#layout-menu').removeClass('d-xl-none');
+        $('#toggleicon').removeClass('bx-menu');
+        $('#toggleicon').addClass('bx-chevron-left');
+        $('.layout-page').css('padding-left','260px');
+        $('.table-responsive').css('width','80vw');
+        $('#bla').css('width','fit-content');
+
+        b=true;
+
+        }
+        
+
+    }
+    </script>
+    <!----------------- GPS Fetch Location for Server SIDE ---------------->
+    <script>
+        function gps(matricule){
+             $('#demoMap').empty().hide();
+             $('#mapspinner').show();
+            const xhttp = new XMLHttpRequest();
+            xhttp.responseType = 'json';
+            xhttp.onload = function(){
+                $('#mapspinner').hide();
+                let a = this.response;
+                openmaps(a["lat"],a["lng"]);
+            }
+            console.log(matricule);
+            xhttp.open("GET","../Home/GPS/?matricule="+matricule);
+            xhttp.send();
+
+        }
+    </script>
+    <!-------------    Maps Script Display loaction on Map  ------------>
+    <script>
+        function openmaps(lat,lng){
+    $('#demoMap').show();
+    map = new OpenLayers.Map("demoMap");
+    map.addLayer(new OpenLayers.Layer.OSM());
+    var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+    var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+    var position       = new OpenLayers.LonLat(lng,lat).transform( fromProjection, toProjection);
+    var markers = new OpenLayers.Layer.Markers();
+    map.addLayer(markers);
+    markers.addMarker(new OpenLayers.Marker(position));
+    var zoom = 15;
+    map.setCenter(position, zoom );
+    }
+    </script>
+
+
+    <!-- Page JS -->
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+  </body>
+</html>
+
+
+@*<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SneatAspNet</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SneatAspNet.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SneatAspNet</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - SneatAspNet - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+*@

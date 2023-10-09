@@ -1,0 +1,214 @@
+﻿@{
+    ViewData["Title"] = "Stats";
+}
+
+<!-------------- BODY ------------------->
+
+
+<style>
+            #container {
+    height: 500px;
+    min-width: 310px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.loading {
+    margin-top: 10em;
+    text-align: center;
+    color: gray;
+}
+</style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+
+<div class="card" style="width : 80vw; height:85vh">
+    <div class="card-header">
+        <div class="card-title"><h5 class="m-0 me-2"> SMS Status Past Week </h5></div>
+    </div>
+        <div class="card-body">
+
+             <div>
+                 <canvas id="last7" style="width:100%; padding:0px 100px 0px 100px; height:70vh;"></canvas>
+             </div>
+
+        </div>
+</div>
+
+<div class="card" style="width : 80vw; height:85vh; margin-top:15px">
+    <div class="card-header">
+        <div class="card-title"><h5 class="m-0 me-2"> SMS Sent to Algerian Territory </h5></div>
+    </div>
+        <div class="card-body">
+
+             <div>
+                 <div id="container"></div>
+             </div>
+
+        </div>
+</div>
+
+
+
+
+<!-------------- Chart Scripts ------------------->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+
+<!--------- Last Week History  -->
+<script>
+var array = [];
+ 
+
+
+var last7xValues = array;
+var last7yValues = [];
+
+var echlast7values = [];
+       
+var last7barColors = "#00aba9";
+
+var myChart = new Chart("last7", {
+  type: "bar",
+  data: {
+    labels: [],
+    datasets: [{
+      label: 'Sent',
+      backgroundColor: "rgb(105, 108, 255,0.4)",
+      borderColor: "rgb(105, 108, 255,1.0)",
+      borderWidth: 2,
+      data: []
+    },
+    {
+      label: 'Failed',
+      backgroundColor: "rgb(255, 99, 132,0.4)",
+      borderColor: "rgb(255, 99, 132,1.0)",
+      borderWidth: 2,
+      data: []
+    }
+    
+    ]
+  },
+  options: {
+    legend: {display: true},
+  }
+});
+var getdata = function(){
+    $.ajax({
+        url: '../home/last7',
+        success: function(data){
+            var json = $.parseJSON(data);
+            myChart.data.labels = json["date"];
+            myChart.data.datasets[0].data = json["env"];
+            myChart.data.datasets[1].data = json["ech"];
+            myChart.update();
+        }
+    })
+}
+getdata();
+setInterval(getdata,3000);
+</script>
+
+
+<!----HighCharts Map of Algeria-->
+<script>
+
+
+
+     (async () => {
+
+const topology = await fetch(
+    'https://code.highcharts.com/mapdata/countries/dz/dz-all.topo.json'
+).then(response => response.json());
+
+
+    let result;
+
+const bla = await fetch('../home/databystate')
+  .then(response => response.json())
+  .then(data => {
+    result = data;
+    //console.log(result);
+  })
+  .catch(error => console.error(error));
+
+// You can now access the result variable here
+console.log("fdsfsfsd",result);
+
+// Prepare demo data. The data is joined to map using value of 'hc-key'
+// property by default. See API docs for 'joinBy' for more info on linking
+// data and map.
+const data = result;
+
+//[
+//    ['dz-ml', 12], ['dz-ob', 11], ['dz-sa', 12], ['dz-tb', 13],
+//    ['dz-il', 14], ['dz-at', 56], ['dz-or', 16], ['dz-sb', 17],
+//    ['dz-tl', 18], ['dz-tn', 255], ['dz-bc', 20], ['dz-na', 21],
+//    ['dz-ar', 26], ['dz-an', 23], ['dz-et', 25], ['dz-jj', 25],
+//    ['dz-sk', 26], ['dz-eb', 23], ['dz-tm', 255], ['dz-gr', 26],
+//    ['dz-lg', 23], ['dz-og', 31], ['dz-al', 32], ['dz-bm', 33],
+//    ['dz-to', 34], ['dz-tp', 35], ['dz-ad', 25], ['dz-ch', 37],
+//    ['dz-mc', 38], ['dz-mg', 39], ['dz-re', 40], ['dz-sd', 41],
+//    ['dz-tr', 50], ['dz-ts', 20], ['dz-bj', 44], ['dz-bb', 45],
+//    ['dz-bl', 46], ['dz-bu', 47], ['dz-1950', 44], ['dz-bs', 49],
+//    ['dz-dj', 50], ['dz-md', 51], ['dz-ms', 52], ['dz-sf', 53],
+//    ['dz-bt', 54], ['dz-co', 55], ['dz-gl', 56], ['dz-kh', 57]
+//];
+
+// Create the chart
+Highcharts.mapChart('container', {
+    chart: {
+        map: topology,
+                   events: {
+                    load: function () {
+                    this.mapZoom(.4, 2, 0);
+                    }
+                }
+    },
+
+    title: {
+        text: ''
+    },
+
+    subtitle: {
+        text: ''
+    },
+
+    mapNavigation: {
+        enabled: true,
+        buttonOptions: {
+            verticalAlign: 'bottom'
+        }
+    },
+    
+    colorAxis: {
+        min: 0,
+        max: 500,
+        stops: [
+            [0,'#b1b3ff'],
+            [0.5,'#696cff'],
+            [1,'#1b1fe5']
+        ]
+    },
+
+    series: [{
+        data: data,
+        name: 'SMS Number',
+        states: {
+            hover: {
+                color: 'rgba(85,0,200,0.5)'
+            }
+        },
+        dataLabels: {
+            enabled: true,
+            format: '{point.name}'
+        }
+    }]
+});
+
+})();
+
+
+</script>
